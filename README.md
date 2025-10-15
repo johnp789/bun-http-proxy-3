@@ -3,14 +3,21 @@
 To install dependencies:
 
 ```bash
+curl -fsSL https://fnm.vercel.app/install | bash
+source ~/.bashrc
+fnm install 22
+fnm use 22
+
 bun install
+
 curl -sSLO https://github.com/hatoo/oha/releases/download/v1.10.0/oha-linux-amd64
 # or https://github.com/hatoo/oha/releases/download/v1.10.0/oha-linux-arm64
 # or https://github.com/hatoo/oha/releases/download/v1.10.0/oha-macos-arm64
 chmod a+x oha-*
+mv oha-* ~/.local/bin # or somewhere in PATH
 ```
 
-## Results
+## Results with Intel Core i4-1240P laptop in WSL2
 
 ```
 $ OHA_PATH=./oha-linux-amd64 bun test --timeout=10000
@@ -28,4 +35,44 @@ benchmark.test.ts:
  0 fail
  6 expect() calls
 Ran 3 tests across 1 file. [18.27s]
+```
+
+## Results with EC2 c6g.xlarge (Graviton2)
+
+```
+$ OHA_PATH=./oha-linux-arm64 bun test --timeout=10000
+bun test v1.3.0 (b0a6feca)
+
+benchmark.test.ts:
+    Direct: 4.194e+4 req/s, 1.131e-3 s p50, 1.470e-3 s p95, 2.232e-3 s p99
+✓ benchamarks > direct access to hello-world [6065.82ms]
+       Bun: 5.199e+3 req/s, 8.699e-3 s p50, 1.264e-2 s p95, 1.856e-2 s p99
+✓ benchamarks > proxy with bun [6022.82ms]
+      Node: 2.563e+3 req/s, 1.667e-2 s p50, 3.042e-2 s p95, 3.913e-2 s p99
+✓ benchamarks > proxy with node [6028.16ms]
+
+ 3 pass
+ 0 fail
+ 6 expect() calls
+Ran 3 tests across 1 file. [18.13s]
+```
+
+## Results with EC2 c8g.xlarge (Graviton4)
+
+```
+$ OHA_PATH=./oha-linux-arm64 bun test --timeout=10000
+bun test v1.3.0 (b0a6feca)
+
+benchmark.test.ts:
+    Direct: 7.778e+4 req/s, 6.342e-4 s p50, 6.906e-4 s p95, 8.525e-4 s p99
+✓ benchamarks > direct access to hello-world [6067.41ms]
+       Bun: 1.287e+4 req/s, 3.558e-3 s p50, 4.600e-3 s p95, 6.614e-3 s p99
+✓ benchamarks > proxy with bun [6019.30ms]
+      Node: 8.188e+3 req/s, 5.652e-3 s p50, 7.572e-3 s p95, 1.157e-2 s p99
+✓ benchamarks > proxy with node [6016.26ms]
+
+ 3 pass
+ 0 fail
+ 6 expect() calls
+Ran 3 tests across 1 file. [18.11s]
 ```
