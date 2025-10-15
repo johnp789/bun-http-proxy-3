@@ -1,0 +1,19 @@
+{
+  "name": "bun-http-proxy-3",
+  "scripts": {
+    "hello": "PORT=9000 bun hello.ts",
+    "start:node": "PORT=8000 node proxy.js",
+    "start:bun": "PORT=8001 bun proxy.js"
+  },
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "http-proxy-3": "^1.22.0"
+  }
+}
