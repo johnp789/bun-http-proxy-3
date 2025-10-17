@@ -76,3 +76,23 @@ benchmark.test.ts:
  6 expect() calls
 Ran 3 tests across 1 file. [18.11s]
 ```
+
+## Results with MacBook Pro (M1 Pro, Linux vz VM)
+
+```
+$ OHA_PATH=./oha-linux-arm64 bun test --timeout=10000
+bun test v1.3.0 (b0a6feca)
+
+benchmark.test.ts:
+    Direct: 1.379e+5 req/s, 3.190e-4 s p50, 6.425e-4 s p95, 7.972e-4 s p99
+✓ benchamarks > direct access to hello-world [6157.02ms]
+       Bun: 1.946e+4 req/s, 2.278e-3 s p50, 4.077e-3 s p95, 5.456e-3 s p99
+✓ benchamarks > proxy with bun [6044.40ms]
+      Node: 8.163e+3 req/s, 5.710e-3 s p50, 7.975e-3 s p95, 1.150e-2 s p99
+✓ benchamarks > proxy with node [6023.15ms]
+
+ 3 pass
+ 0 fail
+ 6 expect() calls
+Ran 3 tests across 1 file. [18.23s]
+```
