@@ -96,3 +96,21 @@ benchmark.test.ts:
  6 expect() calls
 Ran 3 tests across 1 file. [18.23s]
 ```
+
+## Results with GitHub Actions macos-15 runner
+
+```
+bun test v1.3.0 (b0a6feca)
+
+benchmark.test.ts:
+(pass) benchamarks > direct access to hello-world [6240.44ms]
+    Direct: 8.200e+4 req/s, 5.122e-4 s p50, 1.203e-3 s p95, 2.158e-3 s p99
+        Bun: 2.251e+3 req/s, 4.258e-3 s p50, 2.297e-2 s p95, 1.001e+0 s p99
+(pass) benchamarks > proxy with bun [6642.96ms]
+(pass) benchamarks > proxy with node [6200.86ms]
+    Node: 5.885e+3 req/s, 7.888e-3 s p50, 1.181e-2 s p95, 1.835e-2 s p99
+3 pass
+0 fail
+6 expect() calls
+Ran 3 tests across 1 file. [19.11s]
+```
