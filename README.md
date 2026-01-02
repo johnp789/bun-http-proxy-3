@@ -97,7 +97,7 @@ benchmark.test.ts:
 Ran 3 tests across 1 file. [18.23s]
 ```
 
-## Results with GitHub Actions macos-15 runner (old result with Bun 1.3.0)
+## Results with GitHub Actions macos-15 runner (Bun 1.3.0)
 
 ```
 bun test v1.3.0 (b0a6feca)
@@ -115,7 +115,7 @@ benchmark.test.ts:
 Ran 3 tests across 1 file. [19.11s]
 ```
 
-## Results with GitHub Actions macos-15 runner (new result with Bun 1.3.4)
+## Results with GitHub Actions macos-15 runner (Bun 1.3.4)
 
 ```
 bun test v1.3.4 (5eb2145b)
@@ -133,4 +133,21 @@ benchmark.test.ts:
  0 fail
  6 expect() calls
 Ran 3 tests across 1 file. [19.22s]
+```
+
+## Results with GitHub Actions macos-15 runner (Bun 1.3.5)
+
+```
+bun test v1.3.5 (1e86cebd)
+benchmark.test.ts:
+  (pass) benchamarks > direct access to hello-world [6281.77ms]
+      Direct: 3.548e+4 req/s, 9.946e-4 s p50, 3.890e-3 s p95, 6.806e-3 s p99
+  (pass) benchamarks > proxy with bun [6805.86ms]
+         Bun: 1.423e+3 req/s, 8.037e-3 s p50, 3.633e-2 s p95, 1.006e+0 s p99
+  (pass) benchamarks > proxy with node [6346.69ms]
+        Node: 1.671e+3 req/s, 2.598e-2 s p50, 5.674e-2 s p95, 1.060e-1 s p99
+ 3 pass
+ 0 fail
+ 6 expect() calls
+Ran 3 tests across 1 file. [19.47s]
 ```
